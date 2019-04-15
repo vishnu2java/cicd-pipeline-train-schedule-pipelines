@@ -5,17 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh './gradew build --no-daemon'
+                archiveArtifacts artifacts: 'dist/trainSchedule.zip', fingerprint: true                
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+   }
 }
